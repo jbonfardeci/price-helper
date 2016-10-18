@@ -31,9 +31,17 @@ export class AppComponent implements OnInit, OnChanges {
   formula: any;
   estimatedY: number;
   estimatedPrice: number;
+  //onChange;
 
   constructor(private datacontext: DatacontextService){
+    var self = this;
 
+    // this.onChange = (prop, e) => {
+    //   var val = e.target.value.replace(/^\d+\:/, '');
+    //   console.info(val);
+    //   self.model[prop] = val; 
+    //   self.getFormula();
+    // }
   }
 
   ngOnInit(){
@@ -56,5 +64,7 @@ export class AppComponent implements OnInit, OnChanges {
     this.estimatedY = this.formula.estY;
     this.estimatedPrice = this.formula.estPrice;
   }
+
+  
 
 }
