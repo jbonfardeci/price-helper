@@ -1,3 +1,115 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container-fluid text-center">
+
+  <!--<div class="col-sm-6 col-sm-offset-3">-->
+    <div class="panel panel-primary" style="margin:10px auto 10px auto; max-width:480px;">
+      <div class="panel-heading text-center"><h3>Restaurant Price Helper</h3></div>
+      <div class="panel-body text-left" style="padding:20px;">
+
+        <p>Benchmark your pricing for the average meal, drink, and tip.</p>
+        <button class="btn btn-success btn-lg btn-block" (click)="getFormula()">Estimate</button>
+        <hr/>
+          <div class="row">
+            <div class="col-sm-8">
+              <!--<label class="control-label">Borough</label> -->
+              <select [(ngModel)]="model.boro" class="form-control">
+                <option value="">--Borough--</option>
+                <option *ngFor="let b of boros" [ngValue]="b">{{b}}</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <span class="badge badge">b&#770;<sub>1</sub> = {{formula.boro.co}}</span>
+            </div>
+          </div>
+          <hr />
+
+          <div class="row">
+            <div class="col-sm-8">
+              <!--<label class="control-label">Cuisine</label> -->
+              <select [(ngModel)]="model.cuisine" mame="cuisine" class="form-control" >
+                <option value="">--Cuisine--</option>
+                <option *ngFor="let c of cuisines" [ngValue]="c">{{c}}</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <span class="badge">b&#770;<sub>2</sub> = {{formula.cuisine.co}}</span>
+            </div>
+          </div>
+          <hr />
+
+          <div class="row">
+            <div class="col-sm-8">
+              <!--<label class="control-label">Michelin Guide Rating</label> -->
+              <select [(ngModel)]="model.michelin" name="michelin" class="form-control" >
+                <option value="">--Michelin Guide--</option>
+                <option *ngFor="let m of michelins" [ngValue]="m">{{m}}</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <span class="badge">b&#770;<sub>3</sub> = {{formula.michelin.co}}</span>
+            </div>
+          </div>
+          <hr />
+
+          <div class="row">
+            <div class="col-xs-6">
+
+              <div class="form-group">
+                <label class="control-label">Decor Score</label> 
+                <input type="number" min="1" max="30" [(ngModel)]="model.decor" name="decor" class="form-control"  />
+                <span class="badge">b&#770;<sub>4</sub> = {{formula.decor.co}} ({{model.decor}})</span>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Service Score</label> 
+                <input type="number" min="1" max="30" [(ngModel)]="model.service" name="service" class="form-control"  />
+                <span class="badge">b&#770;<sub>5</sub> = {{formula.service.co}} ({{model.service}})</span>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Food Score</label> 
+                <input type="number" min="1" max="30" [(ngModel)]="model.food" name=food class="form-control"  />
+                <span class="badge">b&#770;<sub>6</sub> = {{formula.food.co}} ({{model.food}})</span>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Popularity</label> 
+                <input type="number" min="1" max="1186" [(ngModel)]="model.popularity" name="popularity" class="form-control"  />
+                <span class="badge">b&#770;<sub>7</sub> = {{formula.popularity.co}} ({{model.popularity}})</span>
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label class="control-label">Mean DOHMH Score</label> 
+                <input type="number" min="0" max="100" [(ngModel)]="model.meanInspection" name="meanInspection" class="form-control"  />
+                <span class="badge">b&#770;<sub>8</sub> = {{formula.meanInspection.co}} ({{model.meanInspection}})</span>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Last DOHMH Score</label> 
+                <input type="number" min="0" max="100" [(ngModel)]="model.lastInspection" name="lastInspection" class="form-control"  />
+                <span class="badge">b&#770;<sub>9</sub> = {{formula.lastInspection.co}} ({{model.lastInspection}})</span>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Total DOHMH Violations</label> 
+                <input type="number" min="0" max="100" [(ngModel)]="model.violations" name="violations" class="form-control"  />
+                <span class="badge">b&#770;<sub>10</sub> = {{formula.violations.co}} ({{model.violations}})</span>
+              </div>
+
+            </div>
+
+            <button class="btn btn-success btn-lg btn-block" (click)="getFormula()">Estimate</button>
+
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <h3 class="text-center"><small>Estimated Price = Exp({{formula.estY | number}})</small> = <strong>{{formula.estPrice | currency:'USD':true:'1.2-2'}}</strong></h3>
+        <p class="text-center">Y&#770; = {{formula.estY | number}}</p>       
+      </div>
+    </div>
+
+  <!--</div>-->
+<p>&copy; The Data Jedi &ndash; 2016</p>
+</div>

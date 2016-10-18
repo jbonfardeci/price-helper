@@ -1,0 +1,11 @@
+
+
+input[type='number']{
+    max-width: 100px;
+}
+
+body .badge, .badge.badge{
+    font-size: 14px !important;
+}
+
+
