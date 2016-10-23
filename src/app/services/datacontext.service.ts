@@ -40,6 +40,7 @@ export class DatacontextService {
     {"name": "Bib Gourmand", "coefficient": -0.476488},
     {"name": "Not Mentioned", "coefficient": 0},
     {"name": "No Stars", "coefficient": -0.353178},
+    {"name": "One Star", "coefficient": 0},
     {"name": "Two Stars", "coefficient": 0.4947192},
     {"name": "Three Stars", "coefficient": 0.8500579}
   ];
